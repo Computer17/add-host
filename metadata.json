@@ -1,0 +1,6 @@
+{
+  "name": "Withdrawal Sender - Telegram Mini App & Rewards",
+  "description": "A full-featured Telegram Mini App and Web platform for coin earning, daily tasks, spin wheel, referrals, and withdrawals via bKash, Nagad, Rocket, Bank, and PayPal powered by Firebase Firestore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

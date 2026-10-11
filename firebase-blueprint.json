@@ -1,0 +1,162 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Telegram Mini App user profile and rewards data",
+      "type": "object",
+      "properties": {
+        "telegram_id": { "type": "string", "description": "Unique telegram ID or guest ID" },
+        "username": { "type": "string", "description": "Telegram username" },
+        "first_name": { "type": "string", "description": "First name of the user" },
+        "last_name": { "type": "string", "description": "Last name of the user" },
+        "language": { "type": "string", "enum": ["en", "bn"], "description": "User preferred language" },
+        "coins": { "type": "number", "description": "Current available coin balance" },
+        "total_earned": { "type": "number", "description": "Lifetime earned coins" },
+        "level": { "type": "number", "description": "User loyalty or earner level" },
+        "referral_code": { "type": "string", "description": "Unique referral code for sharing" },
+        "referred_by": { "type": "string", "description": "Referral code of inviter" },
+        "is_admin": { "type": "boolean", "description": "Whether user has administrator access" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "last_active": { "type": "string", "format": "date-time" }
+      },
+      "required": ["telegram_id", "coins", "level", "referral_code"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "Coin earning task or mission",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "title_bn": { "type": "string" },
+        "description": { "type": "string" },
+        "reward": { "type": "number" },
+        "category": { "type": "string", "enum": ["social", "daily", "channel", "special"] },
+        "link": { "type": "string" },
+        "icon": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "reward", "category", "is_active"]
+    },
+    "UserTaskCompletion": {
+      "title": "UserTaskCompletion",
+      "description": "Record of completed user task",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "task_id": { "type": "string" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "reward_coins": { "type": "number" }
+      },
+      "required": ["user_id", "task_id", "completed_at", "reward_coins"]
+    },
+    "Withdrawal": {
+      "title": "Withdrawal",
+      "description": "Withdrawal payout request",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "telegram_id": { "type": "string" },
+        "user_name": { "type": "string" },
+        "amount_coins": { "type": "number" },
+        "amount_bdt": { "type": "number" },
+        "method": { "type": "string", "enum": ["bkash", "nagad", "rocket", "bank", "paypal"] },
+        "account_number": { "type": "string" },
+        "account_holder_name": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "transaction_id": { "type": "string" },
+        "admin_note": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["user_id", "telegram_id", "amount_coins", "amount_bdt", "method", "account_number", "status", "created_at"]
+    },
+    "Channel": {
+      "title": "Channel",
+      "description": "Required Telegram channel for force-join",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "channel_id": { "type": "string" },
+        "invite_link": { "type": "string" },
+        "is_mandatory": { "type": "boolean" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["name", "invite_link", "is_mandatory", "is_active"]
+    },
+    "PromoCode": {
+      "title": "PromoCode",
+      "description": "Redeemable coupon promo code",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "reward_coins": { "type": "number" },
+        "max_uses": { "type": "number" },
+        "current_uses": { "type": "number" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["code", "reward_coins", "is_active"]
+    },
+    "SpinHistory": {
+      "title": "SpinHistory",
+      "description": "Daily wheel spin records",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "reward_coins": { "type": "number" },
+        "spun_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["user_id", "reward_coins", "spun_at"]
+    },
+    "PlatformSettings": {
+      "title": "PlatformSettings",
+      "description": "Global application configuration",
+      "type": "object",
+      "properties": {
+        "coin_to_bdt_rate": { "type": "number" },
+        "min_withdrawal_coins": { "type": "number" },
+        "referral_bonus": { "type": "number" },
+        "daily_spin_limit": { "type": "number" },
+        "bot_name": { "type": "string" },
+        "support_url": { "type": "string" },
+        "notice": { "type": "string" }
+      },
+      "required": ["coin_to_bdt_rate", "min_withdrawal_coins", "referral_bonus"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles collection"
+    },
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Earning tasks collection"
+    },
+    "/completions/{completionId}": {
+      "schema": "UserTaskCompletion",
+      "description": "Task completion history"
+    },
+    "/withdrawals/{withdrawalId}": {
+      "schema": "Withdrawal",
+      "description": "Withdrawal payout requests"
+    },
+    "/channels/{channelId}": {
+      "schema": "Channel",
+      "description": "Required Telegram channels list"
+    },
+    "/promo_codes/{codeId}": {
+      "schema": "PromoCode",
+      "description": "Promo codes"
+    },
+    "/spin_history/{spinId}": {
+      "schema": "SpinHistory",
+      "description": "Spin records"
+    },
+    "/settings/{settingId}": {
+      "schema": "PlatformSettings",
+      "description": "Platform settings"
+    }
+  }
+}

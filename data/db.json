@@ -1,0 +1,97 @@
+{
+  "users": {
+    "6919025708": {
+      "id": "6919025708",
+      "telegram_id": "6919025708",
+      "username": "DarkPrince_Dev",
+      "first_name": "ᴅᴀʀᴋ",
+      "last_name": "𓄂𓀛𓆃 ᴘʀɪɴᴄᴇ",
+      "coins": 800,
+      "total_earned": 800,
+      "level": 1,
+      "referral_code": "REF5708",
+      "referral_count": 1,
+      "completed_tasks": [],
+      "created_at": "2026-10-11T10:03:23.509Z"
+    },
+    "8918488710": {
+      "id": "8918488710",
+      "telegram_id": "8918488710",
+      "username": "user_8918488710",
+      "first_name": "K Shakil",
+      "last_name": "Rana",
+      "coins": 500,
+      "total_earned": 500,
+      "level": 1,
+      "referral_code": "REF8710",
+      "referral_count": 0,
+      "completed_tasks": [],
+      "created_at": "2026-10-11T10:08:16.314Z",
+      "referred_by": "REF5708"
+    }
+  },
+  "withdrawals": [
+    {
+      "id": "wd-1",
+      "telegram_id": "984321",
+      "user_name": "Rafiq Islam",
+      "amount_coins": 2000,
+      "amount_bdt": 20,
+      "method": "bkash",
+      "account_number": "01712345678",
+      "status": "approved",
+      "transaction_id": "BK923847291",
+      "created_at": "2026-10-11T10:03:20.488Z"
+    }
+  ],
+  "tasks": [],
+  "settings": {
+    "coin_to_bdt_rate": 0.01,
+    "min_withdrawal_coins": 1000,
+    "referral_bonus": 300,
+    "bot_name": "Withdrawal Sender Bot"
+  },
+  "admins": [
+    "6919025708"
+  ],
+  "referrals": [
+    {
+      "id": "ref-init-1",
+      "referrer_id": "6919025708",
+      "referred_id": "8918488710",
+      "referrer_name": "ᴅᴀʀᴋ 𓄂𓀛𓆃 ᴘʀɪɴᴄᴇ",
+      "referred_name": "K Shakil Rana",
+      "bonus_coins": 300,
+      "created_at": "2026-10-11T10:08:16.314Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "audit-1791714186044",
+      "action": "UNAUTHORIZED_ADMIN_ATTEMPT",
+      "admin_id": "8918488710",
+      "details": "Forbidden access attempt to GET /api/admin/overview",
+      "timestamp": "2026-10-11T10:23:06.044Z",
+      "success": false
+    },
+    {
+      "id": "audit-init-1",
+      "action": "SYSTEM_INITIALIZED",
+      "admin_id": "6919025708",
+      "details": "Platform security, ID-based admin role and referral systems initialized",
+      "timestamp": "2026-10-11T10:18:00.000Z",
+      "success": true
+    }
+  ],
+  "promo_codes": [
+    {
+      "id": "promo-welcome",
+      "code": "WELCOME100",
+      "reward_coins": 100,
+      "max_uses": 5000,
+      "current_uses": 0,
+      "is_active": true,
+      "created_at": "2026-10-11T10:22:33.437Z"
+    }
+  ]
+}
